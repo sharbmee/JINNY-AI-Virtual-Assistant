@@ -1,0 +1,201 @@
+body{
+    background-color: black;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.square {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 70%; /* Circle shape */
+    background-image: radial-gradient(#6b72ff00 50%, #000dff3b 40%); /* Base background for the hood */
+    box-shadow: 0 0 50px rgba(0, 132, 255, 0.5), inset 0 0 20px rgba(0, 255, 255, 0.6); /* Neon glow effect */
+    animation: vibgyorGlow 6s linear infinite; /* VIBGYOR glow animation */
+}
+
+.square span {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#84ff6b00 40%, #0400ff6c 100%);
+    box-shadow: 0 0 50px rgb(25, 0, 255), inset 0 0 50px rgb(255, 0, 0);
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+    transition: 0.5s;
+    animation: rotate360 10s linear infinite, glowFlicker 1.5s infinite;
+}
+
+/* VIBGYOR glow effect for the hood */
+@keyframes vibgyorGlow {
+    0% { box-shadow: 0 0 15px 5px violet, 0 0 25px violet, 0 0 30px violet; }
+    14% { box-shadow: 0 0 15px 5px indigo, 0 0 25px indigo, 0 0 30px indigo; }
+    28% { box-shadow: 0 0 15px 5px blue, 0 0 25px blue, 0 0 30px blue; }
+    42% { box-shadow: 0 0 15px 5px green, 0 0 25px green, 0 0 30px green; }
+    57% { box-shadow: 0 0 15px 5px yellow, 0 0 25px yellow, 0 0 30px yellow; }
+    71% { box-shadow: 0 0 15px 5px orange, 0 0 25px orange, 0 0 30px orange; }
+    85% { box-shadow: 0 0 15px 5px red, 0 0 25px red, 0 0 30px red; }
+    100% { box-shadow: 0 0 15px 5px violet, 0 0 25px violet, 0 0 30px violet; }
+}
+
+/* Smooth rotation for the inner circles */
+@keyframes rotate360 {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Subtle glow flicker animation */
+@keyframes glowFlicker {
+    0%, 100% { box-shadow: 0 0 30px rgba(0, 132, 255, 0.7); }
+    50% { box-shadow: 0 0 40px rgba(0, 132, 255, 1); }
+}
+
+/* Adjust the animations for each span (circle) */
+.square span:nth-child(1) {
+    z-index: 1;
+    opacity: 0.95;
+    animation: rotate360 4s linear infinite, glowFlicker s infinite;
+}
+
+.square span:nth-child(2) {
+    z-index: 2;
+    opacity: 0.85;
+    animation: rotate360 6s linear infinite, glowFlicker 2s infinite;
+}
+
+.square span:nth-child(3) {
+    z-index: 3;
+    opacity: 0.75;
+    animation: rotate360 8s linear infinite, glowFlicker 2s infinite;
+}
+
+.square span:nth-child(4) {
+    z-index: 4;
+    opacity: 0.7;
+    animation: rotate360 10s linear infinite, glowFlicker 3s infinite;
+}
+
+.square span:nth-child(5) {
+    z-index: 5;
+    opacity: 0.6;
+    animation: rotate360 12s linear infinite, glowFlicker 3.5s infinite;
+}
+
+/* Hover effect for interactivity */
+.square:hover span {
+    transform: scale(1.05);
+    box-shadow: 0 0 70px rgba(0, 132, 255, 0.9), inset 0 0 50px rgba(0, 255, 255, 1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Input Filed Start*/
+
+#TextInput {
+    background-color: #181818a8;
+    border-color: blue;
+    box-shadow: 0 0 20px rgb(25, 0, 255),
+      inset 0 0 0px rgb(25, 0, 255);
+    border-radius: 8px;
+    color: white;
+    padding: 3px 0px 3px 20px;
+    margin: 0px 20%;
+    position: relative;
+    top: 60px;
+    width: 60%;
+  }
+  
+  .input-field {
+    background-color: transparent;
+    border: none;
+    width: 95%;
+    outline: none;
+    color: white;
+    font-family: cursive;
+  }
+  
+  .glow-on-hover {
+    width: 35px;
+    height: 35px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    padding: 0px;
+    margin-left: 10px;
+  }
+  
+  .glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+  }
+  
+  .glow-on-hover:active {
+    color: #181818a8
+  }
+  
+  .glow-on-hover:active:after {
+    background: transparent;
+  }
+  
+  .glow-on-hover:hover:before {
+    opacity: 1;
+  }
+  
+  .glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+  
+  @keyframes glowing {
+    0% {
+      background-position: 0 0;
+    }
+  
+    50% {
+      background-position: 400% 0;
+    }
+  
+    100% {
+      background-position: 0 0;
+    }
+  }
+
+  /* Input Filed End*/
+
+[hidden] {
+    display: none !important;
+}
+
+#SendBtn {
+    display: none;
+}
+
+
+  

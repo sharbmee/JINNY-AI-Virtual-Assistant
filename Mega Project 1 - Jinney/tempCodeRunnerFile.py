@@ -1,0 +1,1 @@
+eel.start('index.html', mode='edge', host='localhost', block=True)  # Start the Eel app
